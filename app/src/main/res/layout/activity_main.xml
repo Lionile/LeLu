@@ -45,6 +45,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Workout" />
+            <Button
+                android:id="@+id/btnTestGitHub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GitHubTest" />
 
         </LinearLayout>
     </ScrollView>
