@@ -40,6 +40,12 @@
                 android:layout_height="wrap_content"
                 android:text="Fuel" />
 
+            <Button
+                android:id="@+id/btnWorkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Workout" />
+
         </LinearLayout>
     </ScrollView>
 
