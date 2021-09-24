@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LeLu</string>
+    <string name="LogoText">LeLu  TOOLS</string>
+    <string name="btnFuel">Fuel</string>
+    <string name="btnWorkout">Workout</string>
+    <string name="ComingSoon">...</string>
 </resources>

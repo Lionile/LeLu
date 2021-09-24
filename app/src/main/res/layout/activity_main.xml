@@ -4,26 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/gradient">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LeLu TOOLS"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:text="@string/LogoText"
+        android:textSize="70sp"
+        android:textStyle="italic"
+        android:fontFamily="@font/infected"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,24 +41,42 @@
                 android:id="@+id/btnFuel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fuel" />
-
-            <Button
-                android:id="@+id/btnFuel2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fuel" />
+                android:background="@color/Transparent"
+                android:textSize="20sp"
+                android:text="@string/btnFuel" />
 
             <Button
                 android:id="@+id/btnWorkout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Workout" />
+                app:layout_constraintVertical_bias="0.04"
+                android:background="@color/Transparent"
+                android:textSize="20sp"
+                android:text="@string/btnWorkout" />
             <Button
-                android:id="@+id/btnTestGitHub"
+                android:id="@+id/ComingSoon1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="GitHubTest" />
+                app:layout_constraintVertical_bias="0.04"
+                android:background="@color/Transparent"
+                android:textSize="20sp"
+                android:text="@string/ComingSoon" />
+            <Button
+                android:id="@+id/ComingSoon2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintVertical_bias="0.04"
+                android:background="@color/Transparent"
+                android:textSize="20sp"
+                android:text="@string/ComingSoon" />
+            <Button
+                android:id="@+id/ComingSoon3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintVertical_bias="0.04"
+                android:background="@color/Transparent"
+                android:textSize="20sp"
+                android:text="@string/ComingSoon" />
 
         </LinearLayout>
     </ScrollView>
