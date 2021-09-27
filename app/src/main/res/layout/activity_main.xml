@@ -8,20 +8,37 @@
     android:background="@drawable/gradient">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewLeLu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/LogoText"
+        android:layout_height="70dp"
+        android:text="@string/LogoTextPart1"
         android:textSize="70sp"
         android:textStyle="italic"
         android:fontFamily="@font/infected"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.01"
+        android:layout_marginStart="20dp"/>
+    <TextView
+        android:id="@+id/textViewTools"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/LogoTextPart2"
+        android:textSize="70sp"
+        android:textStyle="italic"
+        android:fontFamily="@font/infected"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewLeLu"
+        app:layout_constraintVertical_bias="0.00"
+        android:layout_marginEnd="20dp"/>
 
     <ScrollView
         android:layout_width="0dp"
@@ -30,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textViewTools">
 
         <LinearLayout
             android:layout_width="match_parent"
