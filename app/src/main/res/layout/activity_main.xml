@@ -70,6 +70,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/Transparent"
                 android:text="@string/btnWorkout"
+                android:onClick="BtnOnClkWorkout"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintVertical_bias="0.04" />
