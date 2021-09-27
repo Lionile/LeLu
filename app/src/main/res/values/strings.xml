@@ -4,12 +4,11 @@
     <string name="LogoTextPart2">T O O L S </string>
     <string name="btnFuel">Fuel</string>
     <string name="btnWorkout">Workout</string>
-    <string name="ComingSoon">...</string>
+    <string name="ComingSoon">&#8230;</string>
     <string name="txtFuelPrice">Fuel price:</string>
     <string name="txtFuelConsumption">l/100km:</string>
     <string name="txtDistance">Distance:</string>
     <string name="txtPrice">Price</string>
     <string name="txtCurrency">kn</string>
     <string name="btnCalculate">Calculate</string>
-    <string name="ComingSoon">...</string>
 </resources>
