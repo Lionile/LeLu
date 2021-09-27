@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LeLu">
         <activity
+            android:name=".WorkoutActivity"
+            android:exported="true" />
+        <activity
             android:name=".FuelActivity"
             android:exported="true" />
         <activity
