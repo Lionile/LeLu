@@ -44,40 +44,48 @@
                 android:background="@color/Transparent"
                 android:onClick="BtnOnClkFuel"
                 android:text="@string/btnFuel"
+                android:textColor="#000000"
                 android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnWorkout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintVertical_bias="0.04"
                 android:background="@color/Transparent"
+                android:text="@string/btnWorkout"
+                android:textColor="#000000"
                 android:textSize="20sp"
-                android:text="@string/btnWorkout" />
+                app:layout_constraintVertical_bias="0.04" />
+
             <Button
                 android:id="@+id/ComingSoon1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintVertical_bias="0.04"
                 android:background="@color/Transparent"
+                android:text="@string/ComingSoon"
+                android:textColor="#000000"
                 android:textSize="20sp"
-                android:text="@string/ComingSoon" />
+                app:layout_constraintVertical_bias="0.04" />
+
             <Button
                 android:id="@+id/ComingSoon2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintVertical_bias="0.04"
                 android:background="@color/Transparent"
+                android:text="@string/ComingSoon"
+                android:textColor="#000000"
                 android:textSize="20sp"
-                android:text="@string/ComingSoon" />
+                app:layout_constraintVertical_bias="0.04" />
+
             <Button
                 android:id="@+id/ComingSoon3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintVertical_bias="0.04"
                 android:background="@color/Transparent"
+                android:text="@string/ComingSoon"
+                android:textColor="#000000"
                 android:textSize="20sp"
-                android:text="@string/ComingSoon" />
+                app:layout_constraintVertical_bias="0.04" />
 
         </LinearLayout>
     </ScrollView>
