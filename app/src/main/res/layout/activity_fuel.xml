@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".FuelActivity">
+    tools:context=".FuelActivity"
+    android:forceDarkAllowed="false">
 
     <TextView
         android:id="@+id/txtFuelPrice"

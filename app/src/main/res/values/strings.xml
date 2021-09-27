@@ -2,6 +2,9 @@
     <string name="app_name">LeLu</string>
     <string name="LogoTextPart1">L e L u</string>
     <string name="LogoTextPart2">T O O L S </string>
+    <string name="SubLogoTextP1">L e </string>
+    <string name="SubLogoTextP2">L u</string>
+    <string name="SubLogoTextP3">T O O L S</string>
     <string name="btnFuel">Fuel</string>
     <string name="btnWorkout">Workout</string>
     <string name="ComingSoon">&#8230;</string>
