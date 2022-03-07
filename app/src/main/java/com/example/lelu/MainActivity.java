@@ -1,6 +1,7 @@
 package com.example.lelu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
@@ -18,18 +19,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //remove action bar
-        getSupportActionBar().hide();
+
+        ConstraintLayout mainLayout =(ConstraintLayout)findViewById(R.id.mainlayout);
+        ConstraintLayout firstScreen = (ConstraintLayout)findViewById(R.id.firstscreen);
+        ConstraintLayout menu = (ConstraintLayout)findViewById(R.id.menu);
+
+        //startup
+        mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                menu.setVisibility(View.VISIBLE);
+                firstScreen.setVisibility(View.GONE);
+            }
+        });
+
+
+        getSupportActionBar().hide();//remove action bar
+
         //change color of status bar
         Window window = MainActivity.this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.black));
+
+
         //tried :(
         //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
-    public void BtnOnClkFuel(View v)
-    {
+
+
+    public void BtnOnClkFuel(View v){
         Intent intent = new Intent(this, FuelActivity.class);
         startActivity(intent);
     }
@@ -38,4 +57,5 @@ public class MainActivity extends AppCompatActivity {
         Intent switchActivityIntent = new Intent(this, WorkoutActivity.class);
         startActivity(switchActivityIntent);
     }
+
 }

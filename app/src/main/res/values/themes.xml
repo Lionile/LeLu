@@ -15,4 +15,26 @@
         <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
         <!-- Customize your theme here. -->
     </style>
+
+
+    <!--style for wrap content layout-->
+    <style name="WrapContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--style for match parent layout-->
+    <style name="MatchParent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!--my style for startups background images-->
+    <style name="LeLuBackgroundImages" parent="WrapContent">
+        <item name="android:src">@drawable/lelutools</item>
+        <item name="android:maxHeight">100dp</item>
+        <item name="android:maxWidth">100dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
 </resources>

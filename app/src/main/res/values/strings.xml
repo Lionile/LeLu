@@ -1,17 +1,35 @@
 <resources>
-    <string name="app_name">LeLu</string>
-    <string name="LogoTextPart1">L e L u</string>
-    <string name="LogoTextPart2">T O O L S </string>
-    <string name="SubLogoTextP1">L e </string>
-    <string name="SubLogoTextP2">L u</string>
-    <string name="SubLogoTextP3">T O O L S</string>
-    <string name="btnFuel">Fuel</string>
+    <!--workout strings-->
     <string name="btnWorkout">Workout</string>
-    <string name="ComingSoon">&#8230;</string>
+    <string name="txtPushUps">Push Ups</string>
+    <string name="txtPullUps">Pull Ups</string>
+    <string name="btnAdd1">+1</string>
+    <string name="btnAdd5">+5</string>
+    <string name="btnAdd10">+10</string>
+    <string name="btnAdd">Add:</string>
+    <string name="Reset">R</string>
+    <string name="Squats">Squats</string>
+    <string name="Advance">Advance</string>
+    <string name="OpenSection">+</string>
+    <string name="CloseSection">-</string>
+
+    <!--fuel strings-->
+    <string name="btnFuel">Fuel</string>
     <string name="txtFuelPrice">Fuel price:</string>
     <string name="txtFuelConsumption">l/100km:</string>
     <string name="txtDistance">Distance:</string>
     <string name="txtPrice">Price</string>
     <string name="txtCurrency">kn</string>
     <string name="btnCalculate">Calculate</string>
+
+    <!--general strings-->
+    <string name="app_name">LeLu</string>
+    <string name="LogoTextPart1">L e L u</string>
+    <string name="LogoTextPart2">T O O L S </string>
+    <string name="SubLogoTextP1">L e </string>
+    <string name="SubLogoTextP2">L u</string>
+    <string name="SubLogoTextP3">T O O L S</string>
+    <string name="ComingSoon">&#8230;</string>
+    <string name="DefaultValue">0</string>
+
 </resources>
