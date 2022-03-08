@@ -4,21 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class WorkoutActivity extends AppCompatActivity {
 
     //push up buttons
-    Button addOnePushUp, addFivePushUp, addTenPushUp, addCustomPushUp, extendActivityPushUps, shrinkActivityPushUps;
+    Button addOnePushUp;
+    Button addFivePushUp;
+    Button addTenPushUp;
+    Button extendActivityPushUps;
+    Button shrinkActivityPushUps;
     //push up textview
     TextView pushUpCount, txtPushUps;
     //push up edittext
@@ -26,40 +28,33 @@ public class WorkoutActivity extends AppCompatActivity {
     //layouts
     ConstraintLayout pushUpsLayout;
 
-
+    Context context;
 
     //helping variables
     String helper;
-    int[] flag;
-    int i;
-    private static final int workoutType = 3;//types of workouts(push ups, pull ups, squats, etc.)
 
 
     //objects of classes
-    PullUps pullUps;
-    PushUps pushUps;
+    PullUps pullUps= new PullUps(0);
+    PushUps pushUps= new PushUps(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
 
-        addOnePushUp=(Button)findViewById(R.id.btnPushUpAddOne);
-        addFivePushUp=(Button)findViewById(R.id.btnPushUpAddFive);
-        addTenPushUp=(Button)findViewById(R.id.btnPushUpAddTen);
-        addCustomPushUp=(Button)findViewById(R.id.btnPushUpAdd);
-        extendActivityPushUps=(Button)findViewById(R.id.OpenSection);
-        shrinkActivityPushUps=(Button)findViewById(R.id.CloseSection);
+        addOnePushUp= findViewById(R.id.btnPushUpAddOne);
+        addFivePushUp= findViewById(R.id.btnPushUpAddFive);
+        addTenPushUp= findViewById(R.id.btnPushUpAddTen);
+        shrinkActivityPushUps= findViewById(R.id.CloseSection);
+        extendActivityPushUps = findViewById(R.id.OpenSection);
+        pushUpsLayout= findViewById(R.id.PushUpsLayout);
 
-        pushUpsLayout=(ConstraintLayout)findViewById(R.id.PushUpsLayout);
+        pushUpCount= findViewById(R.id.txtPushUpsCount);
+        txtPushUps= findViewById(R.id.txtPushUps);
+        numberOfCustomPushUps= findViewById(R.id.edtxtPushUpsCustomNumber);
 
-        pushUpCount=(TextView)findViewById(R.id.txtPushUpsCount);
-        txtPushUps=(TextView)findViewById(R.id.txtPushUps);
-        numberOfCustomPushUps=(EditText)findViewById(R.id.edtxtPushUpsCustomNumber);
-
-        //set ups
-        for(i=0;i<workoutType;i++) flag[i]=0;
-
+        context=this;
 
         //remove action bar
         getSupportActionBar().hide();
@@ -71,17 +66,6 @@ public class WorkoutActivity extends AppCompatActivity {
 
     }
 
-
-
-    //pushUps methods
-    public void BtnExtendActivity(View view){
-        flag[0]++;
-        if(flag[0]==1){pushUpsLayout.setVisibility(View.VISIBLE);shrinkActivityPushUps.setVisibility(View.VISIBLE);}
-        if(flag[0]==2){extendActivityPushUps.setVisibility(View.INVISIBLE);}
-    }
-    public void BtnShrinkActivity(View view){
-
-    }
     public void BtnAddOnePushUp(View view) {
         pushUps.AddOne();
         pushUpCount.setText(""+pushUps.GetCounter());
@@ -93,7 +77,6 @@ public class WorkoutActivity extends AppCompatActivity {
         pushUps.Check();
     }
     public void BtnAddTenPushUps(View view) {
-
         pushUps.AddTen();
         pushUpCount.setText(""+pushUps.GetCounter());
         pushUps.Check();

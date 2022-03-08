@@ -37,8 +37,11 @@ public class WorkoutTracker {
     }
 
     public void AddCustom(int number){
+        counter += Math.min(number, 100);
+        /*
         if(number>100)counter+=100;
         else counter+=number;
+        */
         clicks++;
     }
 
@@ -72,18 +75,6 @@ class PullUps extends WorkoutTracker {
             pullUp[i]=0;
     }
 
-
-    /*
-    public int GetWideGrip(){ return pullUp[0]; }
-    public int GetNarrowGrip(){ return pullUp[1]; }
-    public int GetChinUp(){ return pullUp[2]; }
-    public int GetWideGripChinUp(){ return pullUp[3]; }
-    public int GetNarrowGripChinUp(){ return pullUp[4]; }
-    public int GetArcher(){ return pullUp[5]; }
-    public int GetOneHand(){ return pullUp[6]; }
-    public int GetMuscleUp(){ return pullUp[7]; }
-    *///some nasty shit
-
 }
 
 class PushUps extends WorkoutTracker {
@@ -91,6 +82,11 @@ class PushUps extends WorkoutTracker {
     int[] pushUp;
 
     public PushUps(int counter) { super(counter); }
+
+    public PushUps(int counter, int[] pushUp) {
+        super(counter);
+        this.pushUp = pushUp;
+    }
 
     public void AddWide(int number) { pushUp[0]+=number; }
     public void AddOneHand(int number) { pushUp[1]+=number; }

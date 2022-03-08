@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         ConstraintLayout firstScreen = (ConstraintLayout)findViewById(R.id.firstscreen);
         ConstraintLayout menu = (ConstraintLayout)findViewById(R.id.menu);
 
-        //startup
+        /* startup */
         mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
