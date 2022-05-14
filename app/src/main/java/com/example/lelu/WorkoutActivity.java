@@ -15,44 +15,42 @@ import android.widget.TextView;
 
 public class WorkoutActivity extends AppCompatActivity {
 
-    //push up buttons
-    Button addOnePushUp;
-    Button addFivePushUp;
-    Button addTenPushUp;
-    Button extendActivityPushUps;
-    Button shrinkActivityPushUps;
-    //push up textview
-    TextView pushUpCount, txtPushUps;
-    //push up edittext
+    //textview
+    TextView pushUpCount;
+    TextView pullUpCount;
+
+    //edittext
     EditText numberOfCustomPushUps;
+    EditText numberOfCustomPullUps;
+
     //layouts
     ConstraintLayout pushUpsLayout;
+    ConstraintLayout pullUpsLayout;
 
     Context context;
 
     //helping variables
     String helper;
 
-
     //objects of classes
-    PullUps pullUps= new PullUps(0);
-    PushUps pushUps= new PushUps(0);
+    PullUps pullUps= new PullUps();
+    PushUps pushUps= new PushUps();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
 
-        addOnePushUp= findViewById(R.id.btnPushUpAddOne);
-        addFivePushUp= findViewById(R.id.btnPushUpAddFive);
-        addTenPushUp= findViewById(R.id.btnPushUpAddTen);
-        shrinkActivityPushUps= findViewById(R.id.CloseSection);
-        extendActivityPushUps = findViewById(R.id.OpenSection);
+        //push ups declaration
         pushUpsLayout= findViewById(R.id.PushUpsLayout);
-
         pushUpCount= findViewById(R.id.txtPushUpsCount);
-        txtPushUps= findViewById(R.id.txtPushUps);
         numberOfCustomPushUps= findViewById(R.id.edtxtPushUpsCustomNumber);
+
+        //pull ups declaration
+        pullUpsLayout= findViewById(R.id.PullUpsLayout);
+        pullUpCount= findViewById(R.id.txtPullUpsCount);
+        numberOfCustomPullUps= findViewById(R.id.edtxtPullUpsCustomNumber);
+
 
         context=this;
 
@@ -66,70 +64,71 @@ public class WorkoutActivity extends AppCompatActivity {
 
     }
 
+    //pushUps methods
     public void BtnAddOnePushUp(View view) {
-        pushUps.AddOne();
+        pushUps.Add(1);
         pushUpCount.setText(""+pushUps.GetCounter());
         pushUps.Check();
     }
     public void BtnAddFivePushUps(View view) {
-        pushUps.AddFive();
+        pushUps.Add(5);
         pushUpCount.setText(""+pushUps.GetCounter());
         pushUps.Check();
     }
     public void BtnAddTenPushUps(View view) {
-        pushUps.AddTen();
+        pushUps.Add(10);
         pushUpCount.setText(""+pushUps.GetCounter());
         pushUps.Check();
     }
     public void BtnAddCustomPushUps(View view) {
         helper=numberOfCustomPushUps.getText().toString();
-        if(helper.matches("")){helper="0";}
-        pushUps.AddCustom(Integer.parseInt(helper));
+        if (helper.matches("")) {
+            helper = "0";
+        }
+        pushUps.Add(Integer.parseInt(helper));
         pushUps.Check();
         pushUpCount.setText(""+pushUps.GetCounter());
     }
     public void BtnResetPushUpCount(View view) {
-        pushUps.SetCounter(0);
+        pushUps.Reset();
         pushUpCount.setText(""+pushUps.GetCounter());
     }
 
 
     //pullUps methods
     public void BtnAddOnePullUps(View view){
-        pullUps.AddOne();
+        pullUps.Add(1);
+        pullUpCount.setText(""+pullUps.GetCounter());
         pullUps.Check();
     }
     public void BtnAddFivePullUps(View view){
-        pullUps.AddFive();
+        pullUps.Add(5);
+        pullUpCount.setText(""+pullUps.GetCounter());
         pullUps.Check();
     }
     public void BtnAddTenPullUps(View view){
-        pullUps.AddTen();
+        pullUps.Add(10);
+        pullUpCount.setText(""+pullUps.GetCounter());
         pullUps.Check();
     }
     public void BtnAddCustomPullUps(View view){
-        helper=numberOfCustomPushUps.getText().toString();
-        if(helper.matches("")){helper="0";}
-        pullUps.AddCustom(Integer.parseInt(helper));
+        helper = numberOfCustomPullUps.getText().toString();
+        if (helper.matches("")) {
+            helper = "0";
+        }
+        pullUps.Add(Integer.parseInt(helper));
+        pullUpCount.setText(""+pullUps.GetCounter());
         pullUps.Check();
     }
     public void BtnResetPullUpCount(View view){
-        pullUps.SetCounter(0);
+        pullUps.Reset();
+        pullUpCount.setText(""+pullUps.GetCounter());
     }
 }
 
 
 /*
-
-added:
--WorkoutTracker class + all methods in it
--startup images
--app icon
--DatabaseHelper class + methods(not all)
--pull ups section
--advance push ups section
--overall improvement in push ups section
--disabled overflow in number (can't go over size of int)
--styles: LeLuBackgroundImages, WrapContent, MatchParent
-
+changed workout tracker class
+changed workout activity
+pull ups now work
 */
