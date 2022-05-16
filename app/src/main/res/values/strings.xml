@@ -31,5 +31,10 @@
     <string name="SubLogoTextP3">T O O L S</string>
     <string name="ComingSoon">&#8230;</string>
     <string name="DefaultValue">0</string>
+    <string name="START">START</string>
+    <string name="STOP">STOP</string>
+    <string name="RESET">RESET</string>
+    <string name="Confirm">Confirm</string>
+    <string name="Save">Save</string>
 
 </resources>

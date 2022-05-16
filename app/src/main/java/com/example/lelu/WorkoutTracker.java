@@ -12,11 +12,7 @@ public class WorkoutTracker {
     /*
     public int GetClicks() { return clicks; }
 
-    public int GetOverflow() { return overflowCounter; }
-
     public void ResetClicks() { clicks=0; }
-
-    public void ResetOverflowCounter() { overflowCounter=0; }
     */
 
     public boolean Check (int x) {

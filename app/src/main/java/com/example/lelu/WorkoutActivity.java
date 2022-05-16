@@ -1,10 +1,12 @@
 package com.example.lelu;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -64,71 +66,188 @@ public class WorkoutActivity extends AppCompatActivity {
 
     }
 
-    //pushUps methods
-    public void BtnAddOnePushUp(View view) {
-        pushUps.Add(1);
-        pushUpCount.setText(""+pushUps.GetCounter());
-        pushUps.Check();
+    public void onClick (View view) {
+        String tag = view.getTag().toString();
+        int number = Integer.parseInt(tag.split(",")[0]);
+        String choice = (tag.split(",")[1]);
+        this.onClick(number, choice);
     }
-    public void BtnAddFivePushUps(View view) {
-        pushUps.Add(5);
-        pushUpCount.setText(""+pushUps.GetCounter());
-        pushUps.Check();
-    }
-    public void BtnAddTenPushUps(View view) {
-        pushUps.Add(10);
-        pushUpCount.setText(""+pushUps.GetCounter());
-        pushUps.Check();
-    }
-    public void BtnAddCustomPushUps(View view) {
-        helper=numberOfCustomPushUps.getText().toString();
-        if (helper.matches("")) {
-            helper = "0";
+
+    //if number 1,5,10 -> adds 1,5,10 push ups
+    //if number -1 -> adds custom
+    //if number 0 -> reset
+    //string declares what object is used, can be: pushup, pullup, squat, dip, all
+    public void onClick(int number, String string){
+
+        if(string.equals("pushup")){
+            switch (number) {
+                case 1:
+                    pushUps.Add(1);
+                    pushUpCount.setText(""+pushUps.GetCounter());
+                    pushUps.Check();
+                    break;
+                case 5:
+                    pushUps.Add(5);
+                    pushUpCount.setText(""+pushUps.GetCounter());
+                    pushUps.Check();
+                    break;
+                case 10:
+                    pushUps.Add(10);
+                    pushUpCount.setText(""+pushUps.GetCounter());
+                    pushUps.Check();
+                    break;
+                case -1:
+                    helper=numberOfCustomPushUps.getText().toString();
+                    if (helper.matches("")) {
+                        helper = "0";
+                    }
+                    pushUps.Add(Integer.parseInt(helper));
+                    pushUps.Check();
+                    pushUpCount.setText(""+pushUps.GetCounter());
+                    break;
+                case 0:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setCancelable(true);
+                    builder.setTitle("Confirmation dialog");
+                    builder.setMessage("Data isn't saved.\nDo you want do delete your workout?");
+                    AlertDialog.Builder builder1 = builder.setPositiveButton(R.string.Confirm, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            pushUps.Reset();
+                            pushUpCount.setText("" + pushUps.GetCounter());
+                        }
+                    });
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    break;
+                default:
+                    break;
+            }
         }
-        pushUps.Add(Integer.parseInt(helper));
-        pushUps.Check();
-        pushUpCount.setText(""+pushUps.GetCounter());
-    }
-    public void BtnResetPushUpCount(View view) {
-        pushUps.Reset();
-        pushUpCount.setText(""+pushUps.GetCounter());
+
+        else if(string.equals("pullup")){
+            switch (number){
+                case 1:
+                    pullUps.Add(1);
+                    pullUpCount.setText(""+pullUps.GetCounter());
+                    pullUps.Check();
+                    break;
+                case 5:
+                    pullUps.Add(5);
+                    pullUpCount.setText(""+pullUps.GetCounter());
+                    pullUps.Check();
+                    break;
+                case 10:
+                    pullUps.Add(10);
+                    pullUpCount.setText(""+pullUps.GetCounter());
+                    pullUps.Check();
+                    break;
+                case -1:
+                    helper = numberOfCustomPullUps.getText().toString();
+                    if (helper.matches("")) {
+                        helper = "0";
+                    }
+                    pullUps.Add(Integer.parseInt(helper));
+                    pullUpCount.setText(""+pullUps.GetCounter());
+                    pullUps.Check();
+                    break;
+                case 0:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setCancelable(true);
+                    builder.setTitle("Confirmation dialog");
+                    builder.setMessage("Data isn't saved.\nDo you want do delete your workout?");
+                    AlertDialog.Builder builder1 = builder.setPositiveButton(R.string.Confirm, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            pullUps.Reset();
+                            pullUpCount.setText(""+pullUps.GetCounter());
+                        }
+                    });
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        else if(string.equals("squat")){
+            switch (number){
+                case 1:
+                    break;
+                case 5:
+                    break;
+                case 10:
+                    break;
+                case -1:
+                    break;
+                case 0:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        else if(string.equals("dip")){
+            switch (number){
+                case 1:
+                    break;
+                case 5:
+                    break;
+                case 10:
+                    break;
+                case -1:
+                    break;
+                case 0:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        else if(string.equals("all")){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(true);
+            builder.setTitle("Confirmation dialog");
+            builder.setMessage("Data isn't saved.\nDo you want do delete your workout?");
+            AlertDialog.Builder builder1 = builder.setPositiveButton(R.string.Confirm, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    pushUps.Reset();
+                    pullUps.Reset();
+                    pushUpCount.setText(""+pushUps.GetCounter());
+                    pullUpCount.setText(""+pullUps.GetCounter());
+                }
+            });
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
 
 
-    //pullUps methods
-    public void BtnAddOnePullUps(View view){
-        pullUps.Add(1);
-        pullUpCount.setText(""+pullUps.GetCounter());
-        pullUps.Check();
-    }
-    public void BtnAddFivePullUps(View view){
-        pullUps.Add(5);
-        pullUpCount.setText(""+pullUps.GetCounter());
-        pullUps.Check();
-    }
-    public void BtnAddTenPullUps(View view){
-        pullUps.Add(10);
-        pullUpCount.setText(""+pullUps.GetCounter());
-        pullUps.Check();
-    }
-    public void BtnAddCustomPullUps(View view){
-        helper = numberOfCustomPullUps.getText().toString();
-        if (helper.matches("")) {
-            helper = "0";
-        }
-        pullUps.Add(Integer.parseInt(helper));
-        pullUpCount.setText(""+pullUps.GetCounter());
-        pullUps.Check();
-    }
-    public void BtnResetPullUpCount(View view){
-        pullUps.Reset();
-        pullUpCount.setText(""+pullUps.GetCounter());
+    public void SaveData(View view){
+
     }
 }
 
 
 /*
-changed workout tracker class
-changed workout activity
-pull ups now work
+added rounded corners xml file
+replaced add methods with onClick method
+added some buttons
 */
