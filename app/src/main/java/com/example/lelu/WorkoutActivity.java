@@ -239,7 +239,7 @@ public class WorkoutActivity extends AppCompatActivity {
         }
     }
 
-
+    //method for saving data from workout to DB
     public void SaveData(View view){
 
     }
@@ -247,7 +247,7 @@ public class WorkoutActivity extends AppCompatActivity {
 
 
 /*
-added rounded corners xml file
 replaced add methods with onClick method
-added some buttons
+added some image buttons, chronometer
+
 */
