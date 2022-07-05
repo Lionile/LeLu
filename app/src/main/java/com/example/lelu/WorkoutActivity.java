@@ -22,25 +22,34 @@ public class WorkoutActivity extends AppCompatActivity {
     //textview
     TextView pushUpCount;
     TextView pullUpCount;
+    TextView squatsCount;
+    TextView dipsCount;
 
     //edittext
     EditText numberOfCustomPushUps;
     EditText numberOfCustomPullUps;
+    EditText numberOfCustomSquats;
+    EditText numberOfCustomDips;
 
     //layouts
     ConstraintLayout pushUpsLayout;
     ConstraintLayout pullUpsLayout;
+    ConstraintLayout squatsLayout;
+    ConstraintLayout dipsLayout;
 
     Context context;
 
     //chronometer
     Chronometer chronometer;
-    Button play,stop,reset;
+    private long pauseOffset;
+    private boolean running;
+
+    //flags
+    boolean pullUpFlag=false,pushUpFlag=false;
 
     //helping variables
     String helper;
-    private long pauseOffset;
-    private boolean running;
+
 
     //objects of classes
     PullUps pullUps= new PullUps();
@@ -61,6 +70,16 @@ public class WorkoutActivity extends AppCompatActivity {
         pullUpCount= findViewById(R.id.txtPullUpsCount);
         numberOfCustomPullUps= findViewById(R.id.edtxtPullUpsCustomNumber);
 
+        //squats declaration
+        squatsLayout= findViewById(R.id.SquatsLayout);
+        squatsCount= findViewById(R.id.txtSquatCount);
+        numberOfCustomSquats= findViewById(R.id.edtxtSquatCustomNumber);
+
+        //dips declaration
+        dipsLayout= findViewById(R.id.DipsLayout);
+        dipsCount= findViewById(R.id.txtDipsCount);
+        numberOfCustomDips= findViewById(R.id.edtxtDipCustomNumber);
+
         //stopwatch declaration
         chronometer=(Chronometer)findViewById(R.id.chronometer);
         chronometer.setFormat("%s");
@@ -78,6 +97,7 @@ public class WorkoutActivity extends AppCompatActivity {
 
     }
 
+    //this method is called when you set it from xml file (android:onClick="onClick")
     public void onClick (View view) {
         String tag = view.getTag().toString();
         int number = Integer.parseInt(tag.split(",")[0]);
@@ -291,10 +311,57 @@ public class WorkoutActivity extends AppCompatActivity {
         chronometer.setBase(SystemClock.elapsedRealtime());
         pauseOffset = 0;
     }
+
+    //if 1 -> expanding, if 0 -> retracting
+    //string represents which sector
+    public void Expand(View view){
+        String tag = view.getTag().toString();
+        boolean flag = Boolean.parseBoolean(tag.split(",")[0]);
+        String choice = (tag.split(",")[1]);
+        this.Expand(flag, choice);
+    }
+
+    public void Expand(boolean flag, String string){
+        if(flag){
+            switch(string){
+                case "pushup":
+                    pushUpsLayout.setVisibility(View.VISIBLE);
+                    break;
+                case "pullup":
+                    pullUpsLayout.setVisibility(View.VISIBLE);
+                    break;
+                case "squat":
+                    squatsLayout.setVisibility(View.VISIBLE);
+                    break;
+                case "dip":
+                    dipsLayout.setVisibility(View.VISIBLE);
+                    break;
+                default:
+                    break;
+            }
+        }
+        else{
+            switch(string){
+                case "pushup":
+                    pushUpsLayout.setVisibility(View.GONE);
+                    break;
+                case "pullup":
+                    pullUpsLayout.setVisibility(View.GONE);
+                    break;
+                case "squat":
+                    squatsLayout.setVisibility(View.GONE);
+                    break;
+                case "dip":
+                    dipsLayout.setVisibility(View.GONE);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }
 
 
-/*
-chronometer works
-doesn't crash when you try to save
+/* changes
+
 */

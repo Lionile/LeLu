@@ -58,16 +58,17 @@
 
     <!--Save button for everything-->
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
-        android:text="@string/Save"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-
         android:onClick="onClick"
         android:tag="0,SaveData"
 
+        android:text="@string/Save"
+        android:textColor="@color/white"
+
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -93,393 +94,874 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02" />
 
-    <!--line above push ups text-->
-    <View
-        android:id="@+id/StraightLinePushUp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtSubLogoTextp3"
-        app:layout_constraintVertical_bias="0.05"/>
+    <!--basically everything-->
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/StopWatchLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            app:layout_constraintVertical_bias="0.05">
 
-    <!--textview for PushUps text, clickable for opening/closing section...(1)-->
-    <TextView
-        android:id="@+id/txtPushUps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/StraightLinePushUp"
-        app:layout_constraintVertical_bias="0"
-        android:text="@string/txtPushUps"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textColor="@color/LightGrey"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <!--layout for push ups section-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPushUps"
-        app:layout_constraintVertical_bias="0"
-        android:id="@+id/PushUpsLayout"
-        android:visibility="visible">
+                <!--line above push ups text-->
+                <View
+                    android:id="@+id/StraightLinePushUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.05"/>
 
-        <!--button for +1 in push ups section-->
-        <Button
-            android:id="@+id/btnPushUpAddOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                <!--drop down arrow-->
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_drop_down"
+                    android:background="@drawable/border_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLinePushUp"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintHorizontal_bias="0.04"
+                    android:layout_marginTop="10dp"
+                    android:onClick="Expand"
+                    android:tag="true,pushup"/>
 
-            android:onClick="onClick"
-            android:tag="1,pushup"
+                <!--textview for PushUps text-->
+                <TextView
+                    android:id="@+id/txtPushUps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLinePushUp"
+                    app:layout_constraintVertical_bias="0"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/txtPushUps"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"/>
 
-            android:backgroundTint="@color/black"
-            android:text="@string/btnAdd1"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+                <!--drop up arrow-->
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_drop_up"
+                    android:background="@drawable/border_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLinePushUp"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintHorizontal_bias="0.96"
+                    android:layout_marginTop="10dp"
+                    android:onClick="Expand"
+                    android:tag="false,pushup"/>
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.02" />
+                <!--layout for push ups section-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPushUps"
+                    app:layout_constraintVertical_bias="0"
+                    android:id="@+id/PushUpsLayout"
+                    android:visibility="gone">
 
-        <!--button for +5 in push ups section-->
-        <Button
-            android:id="@+id/btnPushUpAddFive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            android:tag="5,pushup"
-            android:text="@string/btnAdd5"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.02" />
+                    <!--button for +1 in push ups section-->
+                    <Button
+                        android:id="@+id/btnPushUpAddOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-        <!--button for +10 in push ups section-->
-        <Button
-            android:id="@+id/btnPushUpAddTen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            android:tag="10,pushup"
-            android:text="@string/btnAdd10"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.02" />
+                        android:onClick="onClick"
+                        android:tag="1,pushup"
 
-        <!--button for adding custom set push ups number in push ups section-->
-        <Button
-            android:id="@+id/btnPushUpAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            android:tag="-1,pushup"
-            android:text="@string/btnAdd"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPushUpAddOne"
-            app:layout_constraintVertical_bias="0.02" />
+                        android:backgroundTint="@color/LightGrey"
+                        android:text="@string/btnAdd1"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
 
-        <!--custom set push ups number in push ups section-->
-        <EditText
-            android:id="@+id/edtxtPushUpsCustomNumber"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/black"
-            android:hint="@string/DefaultValue"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.39"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPushUpAddOne"
-            app:layout_constraintVertical_bias="0.02" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
 
-        <!--button for reset push ups counter in push ups section -->
-        <Button
-            android:id="@+id/btnResetPushUps"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            android:tag="0,pushup"
-            android:text="@string/Reset"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.91"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPushUpAddTen"
-            app:layout_constraintVertical_bias="0.02" />
+                    <!--button for +5 in push ups section-->
+                    <Button
+                        android:id="@+id/btnPushUpAddFive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="5,pushup"
+                        android:text="@string/btnAdd5"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
 
-        <!--text view for displaying -->
-        <TextView
-            android:id="@+id/txtPushUpsCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/DefaultValue"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnResetPushUps" />
+                    <!--button for +10 in push ups section-->
+                    <Button
+                        android:id="@+id/btnPushUpAddTen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="10,pushup"
+                        android:text="@string/btnAdd10"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.9"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
 
-        <!--button for advance push ups-->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAdvancePushUps"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:text="@string/Advance"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPushUpAdd"/>
+                    <!--button for adding custom set push ups number in push ups section-->
+                    <Button
+                        android:id="@+id/btnPushUpAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="-1,pushup"
+                        android:text="@string/btnAdd"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnPushUpAddOne"
+                        app:layout_constraintVertical_bias="0.02" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--custom set push ups number in push ups section-->
+                    <EditText
+                        android:id="@+id/edtxtPushUpsCustomNumber"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/black"
+                        android:hint="@string/DefaultValue"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.39"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnPushUpAddOne"
+                        app:layout_constraintVertical_bias="0.02" />
 
-    <!--line above pull ups text-->
-    <View
-        android:id="@+id/StraightLinePullUp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/PushUpsLayout"
-        app:layout_constraintVertical_bias="0"/>
+                    <!--button for reset push ups counter in push ups section -->
+                    <Button
+                        android:id="@+id/btnResetPushUps"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="0,pushup"
+                        android:text="@string/Reset"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.91"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnPushUpAddTen"
+                        app:layout_constraintVertical_bias="0.02" />
 
-    <!--text view for PullUps text, (1)-->
-    <TextView
-        android:id="@+id/txtPullUps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/StraightLinePullUp"
-        app:layout_constraintVertical_bias="0"
-        android:text="@string/txtPullUps"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textColor="@color/LightGrey"/>
+                    <!--text view for displaying -->
+                    <TextView
+                        android:id="@+id/txtPushUpsCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/DefaultValue"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.95"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnResetPushUps" />
 
-    <!--layout for pull ups section-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        android:id="@+id/PullUpsLayout"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtPullUps"
-        app:layout_constraintVertical_bias="0">
+                    <!--button for advance push ups-->
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnAdvancePushUps"
+                        android:backgroundTint="@color/LightGrey"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:text="@string/Advance"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnPushUpAdd"/>
 
-        <!--button for +1 in pull ups section-->
-        <Button
-            android:id="@+id/btnPullUpAddOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            android:tag="1,pullup"
-            android:text="@string/btnAdd1"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.02" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--button for +5 in pull ups section-->
-        <Button
-            android:id="@+id/btnPullUpAddFive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            android:tag="5,pullup"
-            android:text="@string/btnAdd5"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.02" />
+                <!--line above pull ups text-->
+                <View
+                    android:id="@+id/StraightLinePullUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/PushUpsLayout"
+                    app:layout_constraintVertical_bias="0"/>
 
-        <!--button for +10 in pull ups section-->
-        <Button
-            android:id="@+id/btnPullUpAddTen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            android:tag="10,pullup"
-            android:text="@string/btnAdd10"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.02" />
+                <!--drop down arrow-->
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_drop_down"
+                    android:background="@drawable/border_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLinePullUp"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintHorizontal_bias="0.04"
+                    android:layout_marginTop="10dp"
+                    android:onClick="Expand"
+                    android:tag="true,pullup"/>
 
-        <!--button for adding custom set number of pull ups-->
-        <Button
-            android:id="@+id/btnPullUpAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            android:tag="-1,pullup"
-            android:text="@string/btnAdd"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPullUpAddOne"
-            app:layout_constraintVertical_bias="0.02" />
+                <!--text view for PullUps text-->
+                <TextView
+                    android:id="@+id/txtPullUps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLinePullUp"
+                    app:layout_constraintVertical_bias="0"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/txtPullUps"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"/>
 
-        <!--edit text for custom setting number of pull ups-->
-        <EditText
-            android:id="@+id/edtxtPullUpsCustomNumber"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/black"
-            android:hint="@string/DefaultValue"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.39"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPullUpAddOne"
-            app:layout_constraintVertical_bias="0.02" />
+                <!--drop up arrow-->
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_drop_up"
+                    android:background="@drawable/border_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLinePullUp"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintHorizontal_bias="0.96"
+                    android:layout_marginTop="10dp"
+                    android:onClick="Expand"
+                    android:tag="false,pullup"/>
 
-        <!--button for reset pull ups counter-->
-        <Button
-            android:id="@+id/btnResetPullUps"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            android:tag="0,pullup"
-            android:text="@string/Reset"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.91"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPullUpAddTen"
-            app:layout_constraintVertical_bias="0.02" />
+                <!--layout for pull ups section-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/PullUpsLayout"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtPullUps"
+                    app:layout_constraintVertical_bias="0">
 
-        <!--textview for displaying pull ups counter-->
-        <TextView
-            android:id="@+id/txtPullUpsCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/DefaultValue"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnResetPullUps" />
+                    <!--button for +1 in pull ups section-->
+                    <Button
+                        android:id="@+id/btnPullUpAddOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="1,pullup"
+                        android:text="@string/btnAdd1"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAdvancePullUps"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:text="@string/Advance"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnPullUpAdd"/>
+                    <!--button for +5 in pull ups section-->
+                    <Button
+                        android:id="@+id/btnPullUpAddFive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="5,pullup"
+                        android:text="@string/btnAdd5"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--button for +10 in pull ups section-->
+                    <Button
+                        android:id="@+id/btnPullUpAddTen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="10,pullup"
+                        android:text="@string/btnAdd10"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.9"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
 
-    <!--line above squats text-->
-    <View
-        android:id="@+id/StraightLineSquat"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/PullUpsLayout"
-        app:layout_constraintVertical_bias="0"/>
+                    <!--button for adding custom set number of pull ups-->
+                    <Button
+                        android:id="@+id/btnPullUpAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="-1,pullup"
+                        android:text="@string/btnAdd"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnPullUpAddOne"
+                        app:layout_constraintVertical_bias="0.02" />
 
-    <!--text view for Squats section, (1)-->
-    <TextView
-        android:id="@+id/txtSquat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/StraightLineSquat"
-        app:layout_constraintVertical_bias="0"
-        android:text="@string/Squats"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textColor="@color/LightGrey"/>
+                    <!--edit text for custom setting number of pull ups-->
+                    <EditText
+                        android:id="@+id/edtxtPullUpsCustomNumber"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/black"
+                        android:hint="@string/DefaultValue"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.39"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnPullUpAddOne"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--button for reset pull ups counter-->
+                    <Button
+                        android:id="@+id/btnResetPullUps"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="0,pullup"
+                        android:text="@string/Reset"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.91"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnPullUpAddTen"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--textview for displaying pull ups counter-->
+                    <TextView
+                        android:id="@+id/txtPullUpsCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/DefaultValue"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.95"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnResetPullUps" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnAdvancePullUps"
+                        android:backgroundTint="@color/LightGrey"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:text="@string/Advance"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnPullUpAdd"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--line above squats text-->
+                <View
+                    android:id="@+id/StraightLineSquat"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/PullUpsLayout"
+                    app:layout_constraintVertical_bias="0"/>
+
+                <!--drop down arrow-->
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_drop_down"
+                    android:background="@drawable/border_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLineSquat"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintHorizontal_bias="0.04"
+                    android:layout_marginTop="10dp"
+                    android:onClick="Expand"
+                    android:tag="true,squat"/>
+
+                <!--text view for Squats text-->
+                <TextView
+                    android:id="@+id/txtSquat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLineSquat"
+                    app:layout_constraintVertical_bias="0"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/Squats"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"/>
+
+                <!--drop up arrow-->
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_drop_up"
+                    android:background="@drawable/border_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLineSquat"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintHorizontal_bias="0.96"
+                    android:layout_marginTop="10dp"
+                    android:onClick="Expand"
+                    android:tag="false,squat"/>
+
+                <!--layout for squat section-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/SquatsLayout"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtSquat"
+                    app:layout_constraintVertical_bias="0">
+
+                    <!--button for +1 in squat section-->
+                    <Button
+                        android:id="@+id/btnSquatAddOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="1,squat"
+                        android:text="@string/btnAdd1"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--button for +5 in squat section-->
+                    <Button
+                        android:id="@+id/btnSquatAddFive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="5,squat"
+                        android:text="@string/btnAdd5"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--button for +10 in squat section-->
+                    <Button
+                        android:id="@+id/btnSquatAddTen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="10,squat"
+                        android:text="@string/btnAdd10"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.9"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--button for adding custom set number of squats-->
+                    <Button
+                        android:id="@+id/btnSquatAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="-1,squat"
+                        android:text="@string/btnAdd"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnSquatAddOne"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--edit text for custom setting number of squats-->
+                    <EditText
+                        android:id="@+id/edtxtSquatCustomNumber"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/black"
+                        android:hint="@string/DefaultValue"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.39"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnSquatAddOne"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--button for reset squats counter-->
+                    <Button
+                        android:id="@+id/btnResetSquat"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="0,squat"
+                        android:text="@string/Reset"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.91"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnSquatAddTen"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--textview for displaying squats counter-->
+                    <TextView
+                        android:id="@+id/txtSquatCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/DefaultValue"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.95"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnResetSquat" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnAdvanceSquat"
+                        android:backgroundTint="@color/LightGrey"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:text="@string/Advance"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnSquatAdd"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--line above Dips text-->
+                <View
+                    android:id="@+id/StraightLineDip"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/SquatsLayout"
+                    app:layout_constraintVertical_bias="0"/>
+
+                <!--drop down arrow-->
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_drop_down"
+                    android:background="@drawable/border_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLineDip"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintHorizontal_bias="0.04"
+                    android:layout_marginTop="10dp"
+                    android:onClick="Expand"
+                    android:tag="true,dip"/>
+
+                <!--text view for Dips text-->
+                <TextView
+                    android:id="@+id/txtDips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLineDip"
+                    app:layout_constraintVertical_bias="0"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/Dips"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"/>
+
+                <!--drop up arrow-->
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_drop_up"
+                    android:background="@drawable/border_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/StraightLineDip"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintHorizontal_bias="0.96"
+                    android:layout_marginTop="10dp"
+                    android:onClick="Expand"
+                    android:tag="false,dip"/>
+
+                <!--layout for dips section-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/DipsLayout"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtDips"
+                    app:layout_constraintVertical_bias="0">
+
+                    <!--button for +1 in dip section-->
+                    <Button
+                        android:id="@+id/btnDipAddOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="1,dip"
+                        android:text="@string/btnAdd1"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--button for +5 in dip section-->
+                    <Button
+                        android:id="@+id/btnDipAddFive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="5,dip"
+                        android:text="@string/btnAdd5"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--button for +10 in dip section-->
+                    <Button
+                        android:id="@+id/btnDipAddTen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="10,dip"
+                        android:text="@string/btnAdd10"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.9"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--button for adding custom set number of dips-->
+                    <Button
+                        android:id="@+id/btnDipAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="-1,dip"
+                        android:text="@string/btnAdd"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnDipAddOne"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--edit text for custom setting number of dips-->
+                    <EditText
+                        android:id="@+id/edtxtDipCustomNumber"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/black"
+                        android:hint="@string/DefaultValue"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.39"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnDipAddOne"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--button for reset dip counter-->
+                    <Button
+                        android:id="@+id/btnResetDip"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/LightGrey"
+                        android:onClick="onClick"
+                        android:tag="0,dip"
+                        android:text="@string/Reset"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.91"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnDipAddTen"
+                        app:layout_constraintVertical_bias="0.02" />
+
+                    <!--textview for displaying dip counter-->
+                    <TextView
+                        android:id="@+id/txtDipsCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/DefaultValue"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.95"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnResetDip" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnAdvanceDip"
+                        android:backgroundTint="@color/LightGrey"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:text="@string/Advance"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnDipAdd"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
     <!--layout for stopwatch-->
     <LinearLayout
+        android:id="@+id/StopWatchLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -492,47 +974,42 @@
             android:id="@+id/chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
             android:layout_marginStart="20sp"
+            android:layout_weight="0.25"
+            android:textColor="@color/black"
             android:textSize="40sp"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:textStyle="bold" />
 
         <ImageButton
-            android:src="@drawable/ic_play"
             android:id="@+id/BtnPlaySW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
+            android:background="@drawable/border_selector"
             android:onClick="startChronometer"
-            android:background="@color/Transparent"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:src="@drawable/ic_play" />
 
         <ImageButton
-            android:src="@drawable/ic_pause"
             android:id="@+id/BtnStopSW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
+            android:background="@drawable/border_selector"
             android:onClick="pauseChronometer"
-            android:background="@color/Transparent"
+            android:src="@drawable/ic_pause"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <ImageButton
-            android:src="@drawable/ic_stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
             android:layout_marginEnd="20sp"
+            android:layout_weight="0.25"
+            android:background="@drawable/border_selector"
             android:onClick="resetChronometer"
-            android:background="@color/Transparent"
+            android:src="@drawable/ic_stop"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </LinearLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
