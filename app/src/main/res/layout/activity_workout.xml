@@ -58,15 +58,16 @@
 
     <!--Save button for everything-->
     <Button
-        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
-        android:onClick="onClick"
-        android:tag="SaveData"
         android:text="@string/Save"
         android:textColor="@color/white"
         android:textSize="15sp"
+
+        android:onClick="onClick"
+        android:tag="0,SaveData"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -488,31 +489,33 @@
         app:layout_constraintVertical_bias="1">
 
         <Chronometer
+            android:id="@+id/chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
             android:layout_marginStart="20sp"
-            android:format="00:00:00"
-            android:textSize="30sp"
+            android:textSize="40sp"
             android:textStyle="bold"
             android:textColor="@color/black" />
 
         <ImageButton
             android:src="@drawable/ic_play"
+            android:id="@+id/BtnPlaySW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="@string/START"
+            android:onClick="startChronometer"
             android:background="@color/Transparent"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <ImageButton
             android:src="@drawable/ic_pause"
+            android:id="@+id/BtnStopSW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="@string/STOP"
+            android:onClick="pauseChronometer"
             android:background="@color/Transparent"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -523,7 +526,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
             android:layout_marginEnd="20sp"
-            android:text="@string/RESET"
+            android:onClick="resetChronometer"
             android:background="@color/Transparent"
             android:textColor="@color/black"
             android:textSize="20sp" />

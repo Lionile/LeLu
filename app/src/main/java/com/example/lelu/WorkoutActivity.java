@@ -8,10 +8,12 @@ import androidx.core.content.ContextCompat;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -31,8 +33,14 @@ public class WorkoutActivity extends AppCompatActivity {
 
     Context context;
 
+    //chronometer
+    Chronometer chronometer;
+    Button play,stop,reset;
+
     //helping variables
     String helper;
+    private long pauseOffset;
+    private boolean running;
 
     //objects of classes
     PullUps pullUps= new PullUps();
@@ -52,6 +60,10 @@ public class WorkoutActivity extends AppCompatActivity {
         pullUpsLayout= findViewById(R.id.PullUpsLayout);
         pullUpCount= findViewById(R.id.txtPullUpsCount);
         numberOfCustomPullUps= findViewById(R.id.edtxtPullUpsCustomNumber);
+
+        //stopwatch declaration
+        chronometer=(Chronometer)findViewById(R.id.chronometer);
+        chronometer.setFormat("%s");
 
 
         context=this;
@@ -75,7 +87,7 @@ public class WorkoutActivity extends AppCompatActivity {
 
     //if number 1,5,10 -> adds 1,5,10 push ups
     //if number -1 -> adds custom
-    //if number 0 -> reset
+    //if number 0 -> reset or save data
     //string declares what object is used, can be: pushup, pullup, squat, dip, all
     public void onClick(int number, String string){
 
@@ -237,17 +249,52 @@ public class WorkoutActivity extends AppCompatActivity {
             AlertDialog dialog = builder.create();
             dialog.show();
         }
+
+        else if(string.equals("SaveData")){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(true);
+            builder.setTitle("Information");
+            builder.setMessage("Unfortunately this feature doesn't work\nWe are hoping that it will be fixed soon");
+            AlertDialog.Builder builder1 = builder.setPositiveButton(R.string.Confirm, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+//            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                }
+//            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
 
-    //method for saving data from workout to DB
-    public void SaveData(View view){
+    //methods for chronometer (https://www.youtube.com/watch?v=LPjhP9D3pm8)
+    public void startChronometer(View view){
+        if(!running){
+            chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+            chronometer.start();
+            running = true;
+        }
+    }
 
+    public void pauseChronometer(View view){
+        if(running){
+            chronometer.stop();
+            pauseOffset=SystemClock.elapsedRealtime() - chronometer.getBase();
+            running = false;
+        }
+    }
+
+    public void resetChronometer(View view){
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        pauseOffset = 0;
     }
 }
 
 
 /*
-replaced add methods with onClick method
-added some image buttons, chronometer
-
+chronometer works
+doesn't crash when you try to save
 */
