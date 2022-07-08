@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/LeLu/app/src/main/res/drawable/border.xml" value="0.22395833333333334" />
         <entry key="..\:/LeLu/app/src/main/res/drawable/border_selector.xml" value="0.22395833333333334" />
+        <entry key="..\:/LeLu/app/src/main/res/drawable/border_selector_black.xml" value="0.23125" />
+        <entry key="..\:/LeLu/app/src/main/res/drawable/border_selector_transparent.xml" value="0.23125" />
         <entry key="..\:/LeLu/app/src/main/res/drawable/gradient.xml" value="0.26875" />
         <entry key="..\:/LeLu/app/src/main/res/drawable/ic_arrow_drop_down.xml" value="0.22395833333333334" />
         <entry key="..\:/LeLu/app/src/main/res/drawable/ic_arrow_drop_up.xml" value="0.22395833333333334" />
@@ -17,6 +19,11 @@
         <entry key="..\:/LeLu/app/src/main/res/layout/activity_fuel.xml" value="0.24375" />
         <entry key="..\:/LeLu/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/LeLu/app/src/main/res/layout/activity_workout.xml" value="0.2" />
+        <entry key="..\:/LeLu/app/src/main/res/layout/main_menu.xml" value="0.20677083333333332" />
+        <entry key="..\:/LeLu/app/src/main/res/layout/opening_screen.xml" value="0.2" />
+        <entry key="..\:/LeLu/app/src/main/res/layout/workout_layer.xml" value="0.19270833333333334" />
+        <entry key="..\:/LeLu/app/src/main/res/layout/workout_menu.xml" value="0.2" />
+        <entry key="..\:/LeLu/app/src/main/res/layout/workout_sector.xml" value="0.2" />
         <entry key="..\:/LeLu/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1203125" />
         <entry key="..\:/LeLu/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1203125" />
         <entry key="..\:/Users/leonm/AndroidStudioProjects/LeLu/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />

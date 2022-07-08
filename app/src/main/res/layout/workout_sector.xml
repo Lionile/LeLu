@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/Transparent"
+    android:background="@color/Transparent">
+
+
+    <!--line above text-->
+    <View
+        android:id="@+id/StraightLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <!--drop down arrow-->
+    <ImageButton
+        android:src="@drawable/ic_arrow_drop_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_selector_transparent"
+        android:layout_marginTop="10dp"
+
+        android:onClick="Expand"
+        android:tag="true,workout"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/StraightLine"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0.04"
+        />
+
+    <!--text view heading-->
+    <TextView
+        android:id="@+id/txtHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
+        android:text="@string/btnWorkout"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/StraightLine"
+        app:layout_constraintVertical_bias="0"
+
+        />
+
+    <!--drop up arrow-->
+    <ImageButton
+        android:src="@drawable/ic_arrow_drop_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_selector_transparent"
+        android:layout_marginTop="10dp"
+
+        android:onClick="Expand"
+        android:tag="false,workout"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/StraightLine"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0.96"
+        />
+
+    <!--layout for section-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/WorkoutSector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtHeading"
+        app:layout_constraintVertical_bias="0">
+
+        <!--button for +1 in section-->
+        <Button
+            android:id="@+id/btnAddOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/LightGrey"
+
+            android:onClick="onClick"
+            android:tag="1,workout"
+
+            android:text="@string/btnAdd1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for +5 in section-->
+        <Button
+            android:id="@+id/btnAddFive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/LightGrey"
+
+            android:onClick="onClick"
+            android:tag="5,workout"
+
+            android:text="@string/btnAdd5"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for +10 in section-->
+        <Button
+            android:id="@+id/btnAddTen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/LightGrey"
+
+            android:onClick="onClick"
+            android:tag="10,workout"
+
+            android:text="@string/btnAdd10"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for adding custom number-->
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/LightGrey"
+
+            android:onClick="onClick"
+            android:tag="-1,workout"
+
+            android:text="@string/btnAdd"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnAddOne"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--edit text for custom number-->
+        <EditText
+            android:id="@+id/edtxtCustomNumber"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/black"
+
+            android:hint="@string/DefaultValue"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnAddOne"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for reset counter-->
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/LightGrey"
+
+            android:onClick="onClick"
+            android:tag="0,workout"
+
+            android:text="@string/Reset"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnAddTen"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--textview for displaying counter-->
+        <TextView
+            android:id="@+id/txtCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/DefaultValue"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnReset" />
+    <!--
+        <Button
+            android:id="@+id/btnAdvance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/LightGrey"
+
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="@string/Advance"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnAdd"/>
+    -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
