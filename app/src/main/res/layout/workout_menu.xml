@@ -137,20 +137,36 @@
         app:layout_constraintTop_toBottomOf="@+id/chDip"
         app:layout_constraintVertical_bias="0.05"/>
 
-    <TextView
-        android:id="@+id/txtListOfWorkouts"
+    <!--ListView part-->
+    <ScrollView
+        android:id="@+id/swWorkoutList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_marginStart="20dp"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtYourWorkouts"
-        app:layout_constraintVertical_bias="0"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/edtxtCustomWorkout">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ListView
+                android:id="@+id/lwListOfWorkouts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!--Workout input part (TextView + EditText)-->
     <TextView
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
@@ -162,10 +178,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtListOfWorkouts"
+        app:layout_constraintTop_toBottomOf="@+id/txtYourWorkouts"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias="0"/>
-
     <EditText
         android:id="@+id/edtxtCustomWorkout"
         android:layout_width="match_parent"
@@ -180,6 +195,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtName"
         app:layout_constraintVertical_bias="0"/>
 
+    <!--Button for adding workout-->
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
@@ -199,6 +215,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1" />
 
+    <!--Button for starting workout-->
     <Button
         android:id="@+id/btnStart"
         android:layout_width="match_parent"

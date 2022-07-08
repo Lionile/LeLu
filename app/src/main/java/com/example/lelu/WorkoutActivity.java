@@ -2,6 +2,7 @@ package com.example.lelu;
 
 import static com.example.lelu.R.layout.activity_workout;
 import static com.example.lelu.R.layout.workout_layer;
+import static com.example.lelu.R.layout.workout_menu;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -22,21 +23,25 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 import java.lang.invoke.ConstantCallSite;
+import java.util.ArrayList;
 
 public class WorkoutActivity extends AppCompatActivity {
 
 /*-------------------------------------------------declaration global variables-------------------------------------------------*/
     Context context;
     MyWorkoutActivity myWorkoutActivity;
+    ListView listOfWorkouts;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)//some methods doesn't work on lower APIs
     @Override
@@ -52,6 +57,13 @@ public class WorkoutActivity extends AppCompatActivity {
 
         //setting what is main context (actually important)
         context=this;
+
+/*------------------------------setting arrays for inserting data in ListView of workouts----------------------------------------*/
+        myWorkoutActivity.arrayList = new ArrayList<String>();
+        myWorkoutActivity.customWorkout = (EditText)findViewById(R.id.edtxtCustomWorkout);
+        listOfWorkouts = (ListView)findViewById(R.id.lwListOfWorkouts);
+        myWorkoutActivity.adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, myWorkoutActivity.arrayList);
+        listOfWorkouts.setAdapter(myWorkoutActivity.adapter);
 
 /*--------------------------------------------------setting look of an app--------------------------------------------------*/
         //remove action bar
@@ -257,9 +269,3 @@ public class WorkoutActivity extends AppCompatActivity {
 
 }
 
-/* changes
-added xml files: workout_sector,
-opening_screen, main_menu, border_selector_black, workout_menu
-added methods: AddWorkout,StartWorkout
-code rewrite
-*/

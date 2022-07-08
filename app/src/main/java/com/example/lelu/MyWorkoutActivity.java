@@ -14,9 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import static android.os.Build.ID;
@@ -42,9 +44,10 @@ class MyWorkoutActivity extends ConstraintLayout {
     ViewStub viewStub_workoutMenu;
     ConstraintSet constraintSet;
     EditText customWorkout;
-    TextView listOfWorkouts;
     Chronometer chronometer;
     String helper;
+    ArrayAdapter<String> adapter;
+    ArrayList<String> arrayList;
     private long pauseOffset;
     private boolean running;
 
@@ -109,16 +112,11 @@ class MyWorkoutActivity extends ConstraintLayout {
     }
     public void AddWorkout(Context context){
         View.inflate(getContext(), workout_menu,null);
-        customWorkout = (EditText)findViewById(R.id.edtxtCustomWorkout);
-        listOfWorkouts = (TextView)findViewById(R.id.txtListOfWorkouts);
-        String text = listOfWorkouts.getText().toString();
-        listOfWorkouts.setVisibility(View.VISIBLE);
-        helper = customWorkout.getText().toString();
-        if(!(helper.equals(""))){
-            text+=helper+"\n";
+        if(!(customWorkout.getText().toString().equals(""))) {
+            arrayList.add(customWorkout.getText().toString());
+            adapter.notifyDataSetChanged();
         }
         customWorkout.setText("");
-        listOfWorkouts.setText(text.toString());
     }
 
     public void startChronometer() {
