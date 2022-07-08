@@ -19,12 +19,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+/*--------------------------------------------------declaration and initialization--------------------------------------------------*/
         ConstraintLayout mainLayout =(ConstraintLayout)findViewById(R.id.mainlayout);
         ConstraintLayout firstScreen = (ConstraintLayout)findViewById(R.id.firstscreen);
         ConstraintLayout menu = (ConstraintLayout)findViewById(R.id.menu);
 
-        /* startup */
+
+/*--------------------------------------------------changing layout on first click on screen--------------------------------------------------*/
         mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,28 +34,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        getSupportActionBar().hide();//remove action bar
-
+/*--------------------------------------------------setting look of an app--------------------------------------------------*/
+        //remove action bar
+        getSupportActionBar().hide();
         //change color of status bar
         Window window = MainActivity.this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.black));
-
-
-        //tried :(
-        //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN); //tried :(
     }
 
 
-    public void BtnOnClkFuel(View v){
+/*--------------------------------------------------methods for 'OnClick'--------------------------------------------------*/
+
+    public void BtnOnClkFuel(View view){
+        //creating new intent ( from where to where changing )
         Intent intent = new Intent(this, FuelActivity.class);
+        //applying newly create intent
         startActivity(intent);
     }
-
     public void BtnOnClkWorkout(View view) {
+        //creating new intent ( from where to where changing )
         Intent switchActivityIntent = new Intent(this, WorkoutActivity.class);
+        //applying newly create intent
         startActivity(switchActivityIntent);
     }
 

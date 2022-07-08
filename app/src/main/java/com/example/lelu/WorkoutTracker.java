@@ -3,40 +3,29 @@ package com.example.lelu;
 
 public class WorkoutTracker {
 
+/*--------------------------------------------------declaration and initialization--------------------------------------------------*/
     //counter counts how many sets is in workout
-        private int clicks = 0;
+    private int clicks = 0;
     //this counter counts only pull ups
-        int counter = 0;
+    int counter = 0;
     //counter for how many times you exceeded int size for pull ups
-        int overflow = 0;
+    int overflow = 0;
     //string that says what object is this (what workout)
-        String workout = "";
+    String workout = "";
 
-    public void AddClick() {
-        clicks++;
-    }
-
-    public boolean Check (int x) {
-        if (x > 2147483000) {
-            return true;
-        }
-        return false;
-    }
-
+/*------------------------------------------------------------methods------------------------------------------------------------*/
+    public void AddClick() { clicks++; }
+    public boolean Check (int x) { return x > 2147483000; }
     public void Add(int x) {
         counter += x;
         AddClick();
     }
 
-    public boolean Check() {
-        return Check(counter);
-    }
-
-    //getters
+/*--------------------------------------------------getters--------------------------------------------------*/
     public int GetCounter() { return counter; }
     public int GetClicks() { return clicks; }
 
-    //resets
+/*--------------------------------------------------reset/setters--------------------------------------------------*/
     public void ResetClicks() { clicks=0; }
     public void Reset(){
         counter = 0;
