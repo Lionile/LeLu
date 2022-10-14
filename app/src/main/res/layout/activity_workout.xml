@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +8,450 @@
     android:background="@drawable/gradient"
     android:forceDarkAllowed="false">
     <!--forceDarkModeAllowed is used to disable(false)/enable(true, default) dark mode on app from phone-->
+
+    <!--textview for Le-->
+    <TextView
+        android:id="@+id/txtSubLogoTextP1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.05"
+        android:text="@string/SubLogoTextP1"
+        android:textSize="20sp"
+        android:textColor="@color/white"/>
+
+    <!--textview for Lu-->
+    <TextView
+        android:id="@+id/txtSubLogoTextP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/txtSubLogoTextP1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:text="@string/SubLogoTextP2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <!--textview for TOOLS-->
+    <TextView
+        android:id="@+id/txtSubLogoTextP3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/txtSubLogoTextP2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.15"
+        android:text="@string/SubLogoTextP3"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <!--line above push ups text-->
+    <View
+        android:id="@+id/StraightLinePushUp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtSubLogoTextP3"
+        app:layout_constraintVertical_bias="0.05"/>
+
+    <!--textview for PushUps text, clickable for opening/closing section...(1)-->
+    <TextView
+        android:id="@+id/txtPushUps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/StraightLinePushUp"
+        app:layout_constraintVertical_bias="0"
+        android:text="@string/txtPushUps"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/LightGrey"/>
+
+    <!--little + left from push ups text-->
+    <Button
+        android:id="@+id/OpenSection"
+        style="?borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Transparent"
+        android:text="@string/OpenSection"
+        android:textColor="@color/LightGrey"
+        android:textSize="20sp"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:layout_margin="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.01"/>
+
+    <!--little - left from push ups text-->
+    <Button
+        android:id="@+id/CloseSection"
+        style="?borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Transparent"
+        android:text="@string/CloseSection"
+        android:textColor="@color/LightGrey"
+        android:textSize="20sp"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.99"/>
+
+    <!--layout for push ups section-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPushUps"
+        app:layout_constraintVertical_bias="0"
+        android:id="@+id/PushUpsLayout"
+        android:visibility="visible">
+
+        <!--button for +1 in push ups section-->
+        <Button
+            android:id="@+id/btnPushUpAddOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnAddOnePushUp"
+            android:text="@string/btnAdd1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for +5 in push ups section-->
+        <Button
+            android:id="@+id/btnPushUpAddFive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnAddFivePushUps"
+            android:text="@string/btnAdd5"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for +10 in push ups section-->
+        <Button
+            android:id="@+id/btnPushUpAddTen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnAddTenPushUps"
+            android:text="@string/btnAdd10"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for adding custom set push ups number in push ups section-->
+        <Button
+            android:id="@+id/btnPushUpAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnAddCustomPushUps"
+            android:text="@string/btnAdd"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPushUpAddOne"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--custom set push ups number in push ups section-->
+        <EditText
+            android:id="@+id/edtxtPushUpsCustomNumber"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/black"
+            android:hint="@string/DefaultValue"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPushUpAddOne"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for reset push ups counter in push ups section -->
+        <Button
+            android:id="@+id/btnResetPushUps"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnResetPushUpCount"
+            android:text="@string/Reset"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPushUpAddTen"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--text view for displaying -->
+        <TextView
+            android:id="@+id/txtPushUpsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DefaultValue"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnResetPushUps" />
+
+        <!--button for advance push ups-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAdvancePushUps"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="@string/Advance"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPushUpAdd"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--line above pull ups text-->
+    <View
+        android:id="@+id/StraightLinePullUp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/PushUpsLayout"
+        app:layout_constraintVertical_bias="0"/>
+
+    <!--text view for PullUps text, (1)-->
+    <TextView
+        android:id="@+id/txtPullUps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/StraightLinePullUp"
+        app:layout_constraintVertical_bias="0"
+        android:text="@string/txtPullUps"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/LightGrey"/>
+
+    <!--layout for pull ups section-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:id="@+id/PullUpsLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtPullUps"
+        app:layout_constraintVertical_bias="0">
+
+        <!--button for +1 in pull ups section-->
+        <Button
+            android:id="@+id/btnPullUpAddOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnAddOnePullUps"
+            android:text="@string/btnAdd1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button foe +5 in pull ups section-->
+        <Button
+            android:id="@+id/btnPullUpAddFive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnAddFivePullUps"
+            android:text="@string/btnAdd5"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for +10 in pull ups section-->
+        <Button
+            android:id="@+id/btnPullUpAddTen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnAddTenPullUps"
+            android:text="@string/btnAdd10"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for adding custom set number of pull ups-->
+        <Button
+            android:id="@+id/btnPullUpAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnAddCustomPullUps"
+            android:text="@string/btnAdd"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPullUpAddOne"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--edit text for custom setting number of pull ups-->
+        <EditText
+            android:id="@+id/edtxtPullUpsCustomNumber"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/black"
+            android:hint="@string/DefaultValue"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPullUpAddOne"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--button for reset pull ups counter-->
+        <Button
+            android:id="@+id/btnResetPullUps"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:onClick="BtnResetPullUpCount"
+            android:text="@string/Reset"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPullUpAddTen"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <!--textview for displaying pull ups counter-->
+        <TextView
+            android:id="@+id/txtPullUpsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DefaultValue"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnResetPullUps" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--line above squats text-->
+    <View
+        android:id="@+id/StraightLineSquat"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/PullUpsLayout"
+        app:layout_constraintVertical_bias="0"/>
+
+    <!--text view for Squats section, (1)-->
+    <TextView
+        android:id="@+id/txtSquat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/StraightLineSquat"
+        app:layout_constraintVertical_bias="0"
+        android:text="@string/Squats"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/LightGrey"/>
 
 
 

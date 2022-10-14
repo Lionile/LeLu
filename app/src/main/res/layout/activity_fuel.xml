@@ -9,18 +9,6 @@
     android:forceDarkAllowed="false">
 
     <TextView
-        android:id="@+id/txtFuelPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/txtFuelPrice"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/txtFuelConsumption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,20 +17,35 @@
         android:text="@string/txtFuelConsumption"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFuelPrice" />
+
+    <TextView
+        android:id="@+id/txtFuelPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="55dp"
+        android:text="@string/txtFuelPrice"
+        android:textColor="#8a000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
         android:text="@string/txtDistance"
+        android:textColor="#8a000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFuelConsumption" />
+        app:layout_constraintTop_toBottomOf="@+id/spnFuelConstumption" />
 
     <TextView
         android:id="@+id/txtPrice"
@@ -50,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="352dp"
         android:text="@string/txtPrice"
+        android:textColor="#8a000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,37 +66,52 @@
         android:id="@+id/edttxtFuelPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="25dp"
         android:ems="10"
-        android:hint="0.0"
+        android:hint="@string/hintValueDecimalZero"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        app:layout_constraintStart_toEndOf="@+id/txtFuelPrice"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#42000000"
+        android:textColorHint="#60000000"
+        android:backgroundTint="#046a1c"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/edttxtFuelConsumption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="25dp"
         android:ems="10"
-        android:hint="0.0"
+        android:hint="@string/hintValueDecimalZero"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        app:layout_constraintStart_toEndOf="@+id/txtFuelConsumption"
-        app:layout_constraintTop_toBottomOf="@+id/edttxtFuelPrice" />
+        android:textColor="#42000000"
+        android:textColorHint="#60000000"
+        android:backgroundTint="#046a1c"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edttxtFuelPrice"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/edttxtDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="25dp"
         android:ems="10"
-        android:hint="0.0"
+        android:hint="@string/hintValueDecimalZero"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        app:layout_constraintStart_toEndOf="@+id/txtDistance"
-        app:layout_constraintTop_toBottomOf="@+id/edttxtFuelConsumption" />
+        android:textColor="#42000000"
+        android:textColorHint="#60000000"
+        android:backgroundTint="#046a1c"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edttxtFuelConsumption"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/txtCurrency"
@@ -101,6 +120,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="136dp"
         android:text="@string/txtCurrency"
+        android:textColor="#8a000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,10 +132,12 @@
         android:layout_height="37dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
-        android:numeric="decimal"
-        android:text="0.0"
+        android:autoText="false"
+        android:clickable="false"
+        android:hint="0.0"
         android:textAlignment="textEnd"
         android:textColor="#919191"
+        android:textColorHint="#8a000000"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/txtCurrency"
@@ -133,5 +155,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPriceValue"
         app:layout_constraintVertical_bias="0.307" />
+
+    <Spinner
+        android:id="@+id/spnFuelConstumption"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="55dp"
+        android:padding="5dp"
+        android:backgroundTint="#046a1c"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFuelPrice"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

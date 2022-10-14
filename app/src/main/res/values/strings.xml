@@ -22,6 +22,12 @@
     <string name="txtPrice">Price</string>
     <string name="txtCurrency">kn</string>
     <string name="btnCalculate">Calculate</string>
+    <string name="hintValueDecimalZero">0.0</string>
+    <string-array name = "spnFuelConsumption">
+        <item>l/100km</item>
+        <item>mpg UK</item>
+        <item>mpg USA</item>
+    </string-array>
 
     <!--general strings-->
     <string name="app_name">LeLu</string>

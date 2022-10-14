@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-/*--------------------------------------------------setting look of an app--------------------------------------------------*/
+/*--------------------------------------------------setting up the look of the app--------------------------------------------------*/
         //remove action bar
         getSupportActionBar().hide();
         //change color of status bar
@@ -49,15 +49,16 @@ public class MainActivity extends AppCompatActivity {
 /*--------------------------------------------------methods for 'OnClick'--------------------------------------------------*/
 
     public void BtnOnClkFuel(View view){
-        //creating new intent ( from where to where changing )
+        //creating new intent ( current context, target class )
         Intent intent = new Intent(this, FuelActivity.class);
-        //applying newly create intent
+        Intent intnt = new Intent();
+        //applying newly created intent
         startActivity(intent);
     }
     public void BtnOnClkWorkout(View view) {
-        //creating new intent ( from where to where changing )
+        //creating new intent ( current context, target class )
         Intent switchActivityIntent = new Intent(this, WorkoutActivity.class);
-        //applying newly create intent
+        //applying newly created intent
         startActivity(switchActivityIntent);
     }
 
