@@ -82,9 +82,9 @@ public class WorkoutActivity extends AppCompatActivity {
     public void OnClickSaveData(View view) { myWorkoutActivity.OnClickSaveData(this); }
     public void OnClickResetAll(View view) { myWorkoutActivity.OnClickResetAll(this); }
 
-    public void pauseChronometer(View view) { myWorkoutActivity.pauseChronometer(); }
-    public void resetChronometer(View view) { myWorkoutActivity.resetChronometer(); }
-    public void startChronometer(View view) { myWorkoutActivity.startChronometer(); }
+    public void pauseChronometer(View view) { myWorkoutActivity.pauseChronometer(this); }
+    public void resetChronometer(View view) { myWorkoutActivity.resetChronometer(this); }
+    public void startChronometer(View view) { myWorkoutActivity.startChronometer(this); }
 
 
 

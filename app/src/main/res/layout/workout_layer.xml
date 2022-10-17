@@ -3,187 +3,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:visibility="visible"
+    android:id="@+id/WorkoutLayer"
+    android:backgroundTint="@color/Transparent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--textview for Le-->
+    <TextView
+        android:id="@+id/txtSubLogoTextp1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035"
+        app:layout_constraintHorizontal_bias="0.05"
+        android:text="@string/SubLogoTextP1"
+        android:textSize="20sp"
+        />
+
+    <!--textview for Lu-->
+    <TextView
+        android:id="@+id/txtSubLogoTextp2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/txtSubLogoTextp1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:text="@string/SubLogoTextP2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <!--textview for TOOLS-->
+    <TextView
+        android:id="@+id/txtSubLogoTextp3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/txtSubLogoTextp2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035"
+        app:layout_constraintHorizontal_bias="0.15"
+        android:text="@string/SubLogoTextP3"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <!--Save button for everything-->
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:onClick="OnClickSaveData"
+        android:tag="0,SaveData"
+
+        android:text="@string/Save"
+        android:textColor="@color/white"
+
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <!--Reset button for everything-->
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:onClick="OnClickResetAll"
+        android:tag="0,all"
+        android:text="@string/Reset"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <!--line above push ups text-->
+    <View
+        android:id="@+id/StraightLinePushUp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        android:id="@+id/WorkoutLayer"
-        android:backgroundTint="@color/Transparent">
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"/>
 
-        <!--textview for Le-->
-        <TextView
-            android:id="@+id/txtSubLogoTextp1"
-            android:layout_width="wrap_content"
+    <!--basically everything-->
+    <ScrollView
+        android:id="@+id/svScrollWorkout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/StopWatchLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StraightLinePushUp"
+        app:layout_constraintVertical_bias="0.05">
+
+        <LinearLayout
+            android:id="@+id/llWorkoutSubLayer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.035"
-            app:layout_constraintHorizontal_bias="0.05"
-            android:text="@string/SubLogoTextP1"
-            android:textSize="20sp"
+            android:orientation="vertical"
             />
 
-        <!--textview for Lu-->
+    </ScrollView>
+
+    <!--layout for stopwatch-->
+    <LinearLayout
+        android:id="@+id/StopWatchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1">
+
         <TextView
-            android:id="@+id/txtSubLogoTextp2"
+            android:id="@+id/cChronometer"
+            android:layout_width="wrap_content"
+            android:text="00:00:00"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:layout_weight="0.25"
+            android:background="@null"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/BtnPlaySW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/txtSubLogoTextp1"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.035"
-            app:layout_constraintHorizontal_bias="0.00"
-            android:text="@string/SubLogoTextP2"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:layout_weight="0.25"
+            android:background="@null"
+            android:onClick="startChronometer"
+            android:src="@drawable/ic_play" />
 
-        <!--textview for TOOLS-->
-        <TextView
-            android:id="@+id/txtSubLogoTextp3"
+        <ImageButton
+            android:id="@+id/BtnStopSW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/txtSubLogoTextp2"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.035"
-            app:layout_constraintHorizontal_bias="0.15"
-            android:text="@string/SubLogoTextP3"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:layout_weight="0.25"
+            android:background="@null"
+            android:onClick="pauseChronometer"
+            android:src="@drawable/ic_pause"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-        <!--Save button for everything-->
-        <Button
-            android:id="@+id/btnSave"
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="OnClickSaveData"
-            android:tag="0,SaveData"
+            android:layout_marginEnd="20sp"
+            android:layout_weight="0.25"
+            android:background="@null"
+            android:onClick="resetChronometer"
+            android:src="@drawable/ic_stop"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
 
-            android:text="@string/Save"
-            android:textColor="@color/white"
-
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.02" />
-
-        <!--Reset button for everything-->
-        <Button
-            android:id="@+id/btnReset"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="OnClickResetAll"
-            android:tag="0,all"
-            android:text="@string/Reset"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.02" />
-
-        <!--line above push ups text-->
-        <View
-            android:id="@+id/StraightLinePushUp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1"/>
-
-        <!--basically everything-->
-        <ScrollView
-            android:id="@+id/svScrollWorkout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@+id/StopWatchLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/StraightLinePushUp"
-            app:layout_constraintVertical_bias="0.05">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/WorkoutSubLayer">
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-
-        <!--layout for stopwatch-->
-        <LinearLayout
-            android:id="@+id/StopWatchLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1">
-
-            <Chronometer
-                android:id="@+id/cChronometer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20sp"
-                android:layout_weight="0.25"
-                android:textColor="@color/black"
-                android:textSize="40sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/BtnPlaySW"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:background="@drawable/border_selector_transparent"
-                android:onClick="startChronometer"
-                android:src="@drawable/ic_play" />
-
-            <ImageButton
-                android:id="@+id/BtnStopSW"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:background="@drawable/border_selector_transparent"
-                android:onClick="pauseChronometer"
-                android:src="@drawable/ic_pause"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20sp"
-                android:layout_weight="0.25"
-                android:background="@drawable/border_selector_transparent"
-                android:onClick="resetChronometer"
-                android:src="@drawable/ic_stop"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

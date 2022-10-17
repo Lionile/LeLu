@@ -1,55 +1,54 @@
 package com.example.lelu;
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Chronometer;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import static android.os.Build.ID;
-
+import static com.example.lelu.R.layout.activity_workout;
 import static com.example.lelu.R.layout.workout_layer;
 import static com.example.lelu.R.layout.workout_menu;
 
-import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
-class MyWorkoutActivity extends ConstraintLayout {
+class MyWorkoutActivity<imageButton> extends ConstraintLayout {
 
 /*-------------------------------------------------declaration global variables-------------------------------------------------*/
+    private ViewStub viewStub_workoutMenu;
+    private ConstraintSet constraintSet;
+    //workout ListView, adding workouts
+        ArrayAdapter<String> adapter;
+        ArrayList<String> arrayList;
+        EditText customWorkout;
+        int numberOfItems = 0;
+    //chronometer
+        private TextView chronometer;
+        Double time = 0.0;
+        private boolean running = false;
+        Timer timer = new Timer();
+        TimerTask timerTask;
+    //workout sector
 
-    ViewStub viewStub_workoutMenu;
-    ConstraintSet constraintSet;
-    EditText customWorkout;
-    Chronometer chronometer;
-    String helper;
-    ArrayAdapter<String> adapter;
-    ArrayList<String> arrayList;
-    private long pauseOffset;
-    private boolean running;
 
 /*--------------------------------------------------setting new layout via class--------------------------------------------------*/
     @RequiresApi(api = Build.VERSION_CODES.Q)//some methods doesn't work on lower APIs
@@ -72,25 +71,29 @@ class MyWorkoutActivity extends ConstraintLayout {
 /*--------------------------------------------------new layout--------------------------------------------------*/
     void hardCodedWorkoutSegment(Context context, ConstraintSet constraintSet){
         //setup constrain layout-a
+        //'this' is ViewGroup root, aka parent layout, that is main layout where every layout is
         this.setBackground(getResources().getDrawable(R.drawable.gradient));
         this.setForceDarkAllowed(false);
 
-        /*  setup ViewStub-a, this is place where different layouts will be called
-        *   'this' is ViewGroup root, aka parent layout, that is main layout where every layout is
-        */
+        // setup ViewStub-a, this is place where different layouts will be called
         //creating view
         viewStub_workoutMenu = new ViewStub(context);
         //generating id for view (ViewStub), can access with .getId()
         viewStub_workoutMenu.setId(View.generateViewId());
         //setting which layout will be displayed
         viewStub_workoutMenu.setLayoutResource(workout_menu);
-         /* setting width and height
-        *   MATCH_CONSTRAINT -> android:layout_height="match_parent", android:layout_width="match_parent"
-        *   WRAP_CONTENT -> android:layout_height="wrap_content", android:layout_width="wrap_content"
-         */
+        /* setting width and height
+        *  MATCH_CONSTRAINT -> android:layout_height="match_parent", android:layout_width="match_parent" (in this case)
+        *  WRAP_CONTENT -> android:layout_height="wrap_content", android:layout_width="wrap_content"
+        */
         constraintSet.constrainWidth(viewStub_workoutMenu.getId(),ConstraintSet.MATCH_CONSTRAINT);
         constraintSet.constrainHeight(viewStub_workoutMenu.getId(),ConstraintSet.MATCH_CONSTRAINT);
-        //constraining to every parent
+        /*constraining to every parent (here parent is 'this')
+        * app:layout_constraintStart_toStartOf="parent"
+        * app:layout_constraintTop_toTopOf="parent"
+        * app:layout_constraintBottom_toBottomOf="parent"
+        * app:layout_constraintEnd_toEndOf="parent"
+        */
         constraintSet.connect(viewStub_workoutMenu.getId(),ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START);
         constraintSet.connect(viewStub_workoutMenu.getId(),ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP);
         constraintSet.connect(viewStub_workoutMenu.getId(),ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM);
@@ -99,17 +102,44 @@ class MyWorkoutActivity extends ConstraintLayout {
 
     }
 
-/*------------------------------------------------------------methods------------------------------------------------------------*/
+/*----------------------------------------------------------------------methods----------------------------------------------------------------------*/
 
     public void StartWorkout(Context context){
+/*----------------------------------------checking if any ChekBox is checked----------------------------------------*/
+        CheckBox checkBoxPullUp = (CheckBox)findViewById(R.id.cbPullUp);
+        CheckBox checkBoxPushUp = (CheckBox)findViewById(R.id.cbPushUp);
+        CheckBox checkBoxDip = (CheckBox)findViewById(R.id.cbDip);
+        if(checkBoxPushUp.isChecked())numberOfItems++;
+        if(checkBoxDip.isChecked())numberOfItems++;
+        if(checkBoxPullUp.isChecked())numberOfItems++;
+
+
+/*--------------------------------------------------changing layouts--------------------------------------------------*/
         //removing everything from layout
         this.removeAllViews();
         //adding new layout
         this.addView(LayoutInflater.from(context).inflate(workout_layer,this,false));
-        //changing layout from which 'findViewById' takes IDs --> VERY IMPORTANT LINE ( nothing works without this, otherwise 'findViewById' will RETURN null )
-        View.inflate(getContext(), workout_layer,null);
-        chronometer = (Chronometer)findViewById(R.id.cChronometer);
+        //View.inflate(getContext(), workout_layer, null);
+        chronometer = (TextView) findViewById(R.id.cChronometer);
+
+
+
+
+/*----------------------------------------loading number of workout sectors----------------------------------------*///fix this part
+        LinearLayout linearLayoutWorkoutSubLayer = (LinearLayout)findViewById(R.id.WorkoutSubLayer);
+        if(linearLayoutWorkoutSubLayer == null){
+            Toast.makeText(context, "Layout postoji idiote jedan",
+                    Toast.LENGTH_LONG).show();
+        }
+        else {
+            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            linearLayoutWorkoutSubLayer.addView(layoutInflater.inflate(R.layout.workout_sector,linearLayoutWorkoutSubLayer,true),1);
+        }
+
     }
+
+
+
     public void AddWorkout(Context context){
         View.inflate(getContext(), workout_menu,null);
         if(!(customWorkout.getText().toString().equals(""))) {
@@ -117,26 +147,61 @@ class MyWorkoutActivity extends ConstraintLayout {
             adapter.notifyDataSetChanged();
         }
         customWorkout.setText("");
+        numberOfItems++;
     }
 
-    public void startChronometer() {
+
+/*----------------------------------------timer methods----------------------------------------*/
+    public void startChronometer(Context context){
         if(!running){
-            chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
-            chronometer.start();
+            startTimer(context);
             running = true;
         }
     }
-    public void pauseChronometer(){
+    private void startTimer(Context context) {
+        timerTask = new TimerTask() {
+            @Override
+            public void run()
+            {
+                ((Activity)context).runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        time++;
+                        chronometer.setText(getTimerText());
+                    }
+                });
+
+            }
+        };
+        timer.scheduleAtFixedRate(timerTask,0,1000);
+    }
+    private String getTimerText(){
+        int rounded = (int) Math.round(time);
+        int seconds = ((rounded % 86400) % 3600) % 60;
+        int minutes = ((rounded % 86400) % 3600) / 60;
+        int hours = ((rounded % 86400) / 3600);
+        return formatTime(seconds,minutes,hours);
+    }
+    private String formatTime(int seconds, int minutes, int hours) {
+        @SuppressLint("DefaultLocale") String s = String.format("%02d", hours) + ":" + String.format("%02d", minutes) + ":" + String.format("%02d", seconds);
+        return s;
+    }
+    public void pauseChronometer(Context context){
         if(running){
-            chronometer.stop();
-            pauseOffset=SystemClock.elapsedRealtime() - chronometer.getBase();
+            timerTask.cancel();
             running = false;
         }
     }
-    public void resetChronometer(){
-        chronometer.setBase(SystemClock.elapsedRealtime());
-        pauseOffset = 0;
+    public void resetChronometer(Context context){
+        if(timerTask != null){
+            timerTask.cancel();
+            running = false;
+            time= 0.0;
+            chronometer.setText(formatTime(0,0,0));
+        }
     }
+
 
     public void OnClickSaveData(Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
